@@ -16,7 +16,20 @@ var processor = new OrderProcessor
     OnOrderInitialized = SendMessageToWarehouse
 };
 
-processor.Process(order, SendConfirmationEmail);
+OrderProcessor.ProcessCompleted chain = One;
+chain += Two;
+chain += Three;
+
+processor.Process(order, chain);
+
+chain -= Two;
+processor.Process(order, chain);
+
+
+void One(Order order) => Console.WriteLine("One");
+void Two(Order order) => Console.WriteLine("Two");
+void Three(Order order) => Console.WriteLine("Three");
+
 
 bool SendMessageToWarehouse(Order order)
 {
