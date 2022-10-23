@@ -16,9 +16,9 @@ var processor = new OrderProcessor
     OnOrderInitialized = (order) => order.IsReadyForShipment
 };
 
-OrderProcessor.ProcessCompleted onCompleted = (order) => 
+Action<Order> onCompleted = (order) =>
 {
-    Console.WriteLine($"Processed order {order.OrderNumber}");
+   Console.WriteLine($"Processed order {order.OrderNumber}");
 };
 
 processor.Process(order, onCompleted);
