@@ -18,12 +18,14 @@ var processor = new OrderProcessor
 
 processor.Process(order, SendConfirmationEmail);
 
-void SendMessageToWarehouse()
+bool SendMessageToWarehouse(Order order)
 {
-    Console.WriteLine("Please pack the order");
+    Console.WriteLine($"Please pack the order {order.OrderNumber}");
+
+    return true;
 }
 
-void SendConfirmationEmail()
+void SendConfirmationEmail(Order order)
 {
-    Console.WriteLine("Order confirmation Email");
+    Console.WriteLine($"Order confirmation Email for {order.OrderNumber}");
 }
